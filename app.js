@@ -9,6 +9,7 @@ function toggleDarkMode() {
 
 // Check for saved user preference on load
 document.addEventListener("DOMContentLoaded", () => {
+  toggleDarkMode();
   const darkModeSaved = localStorage.getItem("darkMode");
 
   if (darkModeSaved === "true") {
