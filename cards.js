@@ -8,10 +8,10 @@ const projects = [
     title: "To-Do List",
     description: "Simple to-do list with local storage",
     number: 1,
-    github: "https://github.com/example/todo-list",
-    demo: "https://example.com/todo-list-demo",
+    github: "https://github.com/paramrai/vanillaJs/tree/main/todoList",
+    demo: "https://todo-list-olive-one.vercel.app",
     difficulty: "beginner",
-    isAdded: false,
+    isAdded: true,
   },
   {
     title: "Calculator",
