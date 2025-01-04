@@ -17,10 +17,10 @@ const projects = [
     title: "Calculator",
     description: "Basic arithmetic calculator with keyboard support",
     number: 2,
-    github: "https://github.com/example/calculator",
-    demo: "https://example.com/calculator-demo",
+    github: "https://github.com/paramrai/vanillaJs/tree/main/calculator",
+    demo: "https://javascript-calculator-black.vercel.app/",
     difficulty: "beginner",
-    isAdded: false,
+    isAdded: true,
   },
   {
     title: "Digital Clock",
