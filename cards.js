@@ -35,10 +35,10 @@ const projects = [
     title: "Color Picker",
     description: "RGB and HEX color picker with preview",
     number: 4,
-    github: "https://github.com/example/color-picker",
-    demo: "https://example.com/color-picker-demo",
+    github: "https://github.com/paramrai/vanillaJs/tree/main/colorPicker",
+    demo: "./colorPicker/index.html",
     difficulty: "beginner",
-    isAdded: false,
+    isAdded: true,
   },
   {
     title: "Weather App",

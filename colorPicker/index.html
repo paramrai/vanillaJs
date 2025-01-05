@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Color Picker</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>HEX and RGB Color Picker</h1>
+
+      <div id="colorPreview">rgb(255,255,255)</div>
+
+      <div class="slider-container">
+        <label for="redRange">Red <span id="redRangeSpan">0</span></label>
+        <input type="range" id="redRange" value="45" max="255" />
+      </div>
+
+      <div class="slider-container">
+        <label for="greenRange">Green <span id="greenRangeSpan">0</span></label>
+        <input type="range" id="greenRange" value="65" max="255" />
+      </div>
+
+      <div class="slider-container">
+        <label for="blueRange">Blue <span id="blueRangeSpan">0</span></label>
+        <input type="range" id="blueRange" value="52" max="255" />
+      </div>
+
+      <div class="slider-container">
+        <label for="hexRange">
+          HEX <span id="hexRangeSpan">#</span>
+          <span id="hexDecimal"></span>
+        </label>
+        <input type="range" id="hexRange" value="0" max="16777215" />
+      </div>
+
+      <button class="copy-button" id="copyButton">
+        <span>Copy to Clipboard</span>
+        <i class="fas fa-copy icon"></i>
+      </button>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
