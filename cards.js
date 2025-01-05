@@ -9,7 +9,7 @@ const projects = [
     description: "Simple to-do list with local storage",
     number: 1,
     github: "https://github.com/paramrai/vanillaJs/tree/main/todoList",
-    demo: "https://todo-list-olive-one.vercel.app",
+    demo: "./todoList/index.html",
     difficulty: "beginner",
     isAdded: true,
   },
@@ -18,7 +18,7 @@ const projects = [
     description: "Basic arithmetic calculator with keyboard support",
     number: 2,
     github: "https://github.com/paramrai/vanillaJs/tree/main/calculator",
-    demo: "https://javascript-calculator-black.vercel.app/",
+    demo: "./calculator/index.html",
     difficulty: "beginner",
     isAdded: true,
   },
@@ -994,19 +994,35 @@ function createSpinner() {
   return spinner;
 }
 
+let hasReachedEnd = false;
+
 async function loadMoreCards() {
-  if (isLoading) return;
+  if (isLoading || hasReachedEnd) return;
 
   const start = (page - 1) * projectsPerPage;
   const end = start + projectsPerPage;
 
   // Check if we've reached the end
   if (start >= projects.length) {
-    const endMessage = document.createElement("div");
-    endMessage.className = "end-message";
-    endMessage.textContent = "End of projects";
-    document.getElementById("body").appendChild(endMessage);
-    window.removeEventListener("scroll", handleScroll);
+    if (!hasReachedEnd) {
+      hasReachedEnd = true;
+      // Remove any existing end message first
+      const existingEndMessage = document.querySelector(".end-message");
+      if (existingEndMessage) {
+        existingEndMessage.remove();
+      }
+
+      const endMessage = document.createElement("div");
+      endMessage.className = "end-message";
+      endMessage.textContent = "You've reached the end of the projects! 🎉";
+      document.querySelector("#body").appendChild(endMessage);
+
+      // Remove scroll event listener
+      window.removeEventListener("scroll", debouncedHandleScroll);
+      window.removeEventListener("touchmove", debouncedHandleScroll);
+      window.removeEventListener("touchend", debouncedHandleScroll);
+    }
+    return;
   }
 
   isLoading = true;
@@ -1034,15 +1050,51 @@ async function loadMoreCards() {
   isLoading = false;
 }
 
+// Add debounce function
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
 function handleScroll() {
+  if (hasReachedEnd) return;
+
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-  if (scrollTop + clientHeight >= scrollHeight - 5) {
+  const mobileMargin = isMobile() ? 150 : 50; // Larger margin for mobile
+
+  // Use window.innerHeight as fallback for mobile browsers
+  const viewportHeight = clientHeight || window.innerHeight;
+  const currentScroll = scrollTop || window.pageYOffset;
+
+  // Check if we're near the bottom
+  if (currentScroll + viewportHeight >= scrollHeight - mobileMargin) {
     loadMoreCards();
   }
 }
 
+// Use debounced version of scroll handler
+const debouncedHandleScroll = debounce(handleScroll, 100);
+
 // Initial load
 loadMoreCards();
 
-// Add scroll event listener
-window.addEventListener("scroll", handleScroll);
+// Remove old event listener and add debounced version
+window.removeEventListener("scroll", handleScroll);
+window.addEventListener("scroll", debouncedHandleScroll);
+
+// Add touch events for mobile
+if ("ontouchstart" in window) {
+  window.addEventListener("touchmove", debouncedHandleScroll);
+  window.addEventListener("touchend", debouncedHandleScroll);
+}
