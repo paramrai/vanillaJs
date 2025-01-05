@@ -26,10 +26,10 @@ const projects = [
     title: "Digital Clock",
     description: "Real-time digital clock with date display",
     number: 3,
-    github: "https://github.com/example/digital-clock",
-    demo: "https://example.com/digital-clock-demo",
+    github: "https://github.com/paramrai/vanillaJs/tree/main/digitalClock",
+    demo: "./digitalClock/index.html",
     difficulty: "beginner",
-    isAdded: false,
+    isAdded: true,
   },
   {
     title: "Color Picker",
