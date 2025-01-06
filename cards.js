@@ -89,10 +89,10 @@ const projects = [
     title: "Quiz App",
     description: "Multiple choice quiz with score tracking",
     number: 10,
-    github: "https://github.com/example/quiz-app",
-    demo: "https://example.com/quiz-app-demo",
+    github: "https://github.com/paramrai/vanillaJs/tree/main/quizApp",
+    demo: "./quizApp/index.html",
     difficulty: "beginner",
-    isAdded: false,
+    isAdded: true,
   },
   {
     title: "Notes App",
