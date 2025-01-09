@@ -53,9 +53,12 @@ function toggleDropdown() {
 
 function setCategory(cat) {
   category = cat;
-  const isOpened = document.querySelector("form_popup.active");
+  if (cat === "All") {
+    category = "Uncategorised";
+  }
+  const isOpened = document.querySelector(".form_popup.active");
   if (!isOpened) return;
-  document.querySelector(".dropdown_btn i").innerHTML = cat;
+  document.querySelector(".dropdown_btn i").innerText = category;
   toggleDropdown();
 }
 
@@ -174,17 +177,13 @@ window.addEventListener("DOMContentLoaded", () => {
     .join("");
 });
 
-window.addEventListener(
-  "keypress",
-  (e) => {
-    const formPopup = document.querySelector(".form_popup");
+window.addEventListener("keypress", (e) => {
+  const formPopup = document.querySelector(".form_popup");
 
-    if (e.key === "Enter" && formPopup.classList.contains("active")) {
-      addNote();
-    }
-  },
-  { once: true }
-);
+  if (e.key === "Enter" && formPopup.classList.contains("active")) {
+    addNote();
+  }
+});
 
 // ADD NEW CATEGORY
 
