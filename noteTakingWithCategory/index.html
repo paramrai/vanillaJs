@@ -4,26 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <title>Beautify Notes</title>
   </head>
   <body>
     <div class="app_container">
       <div class="icons">
-        <i class="folder">Folder</i>
-        <i class="setting">Setting</i>
+        <i class="folder" onclick="openCategoryForm()">New Category</i>
       </div>
+      <div class="category_form_popup"></div>
       <div class="heading_div">
         <h1 class="heading">Notes</h1>
       </div>
       <div class="tabs">
         <span class="tab active">All</span>
-        <span class="tab">First</span>
-        <span class="tab">Second</span>
-        <span class="tab">third</span>
       </div>
 
       <div class="form_popup">
-        <button onclick="openForm()">+</button>
+        <button onclick="openForm()" id="add_btn">+</button>
       </div>
       <div class="notes_container"></div>
     </div>
