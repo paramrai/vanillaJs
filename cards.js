@@ -98,10 +98,11 @@ const projects = [
     title: "Notes App",
     description: "Note-taking app with categories",
     number: 11,
-    github: "https://github.com/example/notes-app",
-    demo: "https://example.com/notes-app-demo",
+    github:
+      "https://github.com/paramrai/vanillaJs/tree/main/noteTakingWithCategory",
+    demo: "./noteTakingWithCategory/index.html",
     difficulty: "beginner",
-    isAdded: false,
+    isAdded: true,
   },
   {
     title: "Countdown Timer",
