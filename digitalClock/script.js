@@ -7,9 +7,10 @@ function updateTime() {
 
   const now = new Date();
   let twelveHourClock = now.getHours();
-  if (now.getHours() > 12);
-  {
+  if (twelveHourClock > 12) {
     twelveHourClock -= 12;
+  } else if (twelveHourClock === 12) {
+    twelveHourClock = 12;
   }
 
   hours.textContent = String(twelveHourClock).padStart(2, "0");
