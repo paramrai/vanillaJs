@@ -907,55 +907,6 @@ const projects = [
   },
 ];
 
-// Update difficulty levels in projects array
-projects.forEach((project) => {
-  // Advanced projects
-  if (
-    project.title.includes("Game Engine") ||
-    project.title.includes("Video Conference") ||
-    project.title.includes("Data Structure") ||
-    project.title.includes("Algorithm") ||
-    project.title.includes("Web Analytics") ||
-    project.title.includes("Image Recognition") ||
-    project.title.includes("Face Detection") ||
-    project.title.includes("Progressive Web App") ||
-    project.title.includes("Site Builder") ||
-    project.title.includes("Web Scraper")
-  ) {
-    project.difficulty = "advanced";
-  }
-  // Beginner projects
-  else if (
-    project.title.includes("Calculator") ||
-    project.title.includes("Clock") ||
-    project.title.includes("To-Do") ||
-    project.title.includes("Color Picker") ||
-    project.title.includes("Counter") ||
-    project.title.includes("Quiz") ||
-    project.title.includes("BMI") ||
-    project.description.includes("simple") ||
-    project.description.includes("basic") ||
-    project.title.includes("Notes")
-  ) {
-    project.difficulty = "beginner";
-  }
-  // Everything else is intermediate
-  else {
-    project.difficulty = "intermediate";
-  }
-});
-
-// Sort projects by difficulty
-projects.sort((a, b) => {
-  const difficultyOrder = { beginner: 1, intermediate: 2, advanced: 3 };
-  return difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty];
-});
-
-// Update project numbers after sorting
-projects.forEach((project, index) => {
-  project.number = index + 1;
-});
-
 const firstTenProjects = projects.slice(0, 10);
 
 function createCard(project, index) {
